@@ -15,8 +15,8 @@
 		<h2 Sign In</h2>
 		<form class="form-horizontal" action="login.php" method="POST">
 			<fieldset>
-				<p><label for="username">Username</label></p>
-				<p><input type="text" name="username"></p>
+				<p><label for="email">Email</label></p>
+				<p><input type="text" name="email"></p>
 				<p><label for="password">Password</label></p>
 				<p><input type="password" name="password"></p>
 				<div id="button">
