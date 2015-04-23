@@ -23,19 +23,19 @@
 			$_SESSION["email"] = $email;
 			if ($role == "admin"){
 			
-				header("location: display.php");
+				header("Location: display.php");
 			}
 			else{
-				header("location: search.php");
+				header("Location: search.php");
 			}
 		}
 		else
 		{
-			header("location: inscription.php");
+			header("Location: inscription.php");
 		}
 	}
 	else
 	{
-		header("location: index.php?empty");
+		header("Location: index.php?empty");
 	}
 ?>
