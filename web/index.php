@@ -15,8 +15,8 @@
 		<h2 Sign In</h2>
 		<form class="form-horizontal" action="login.php" method="POST">
 			<fieldset>
-				<p><label for="username">Username</label></p>
-				<p><input type="text" name="username"></p>
+				<p><label for="email">Email</label></p>
+				<p><input type="text" name="email"></p>
 				<p><label for="password">Password</label></p>
 				<p><input type="password" name="password"></p>
 				<div id="button">
@@ -28,6 +28,25 @@
 	</div>
 
  	<?php
+
+ 		require('../vendor/autoload.php');
+
+ 		$app = new Silex\Application();
+		$app['debug'] = true;
+
+		// Register the monolog logging service
+		$app->register(new Silex\Provider\MonologServiceProvider(), array(
+		  'monolog.logfile' => 'php://stderr',
+		));
+
+		// Our web handlers
+
+		$app->get('/', function() use($app) {
+		  $app['monolog']->addDebug('logging output.');
+		  return 'Hello';
+		});
+
+		$app->run();
 
 		if (isset($_GET["empty"]))
 		{

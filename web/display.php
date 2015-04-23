@@ -1,14 +1,14 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION["username"]))
+    if (!isset($_SESSION["email"]))
     {
         header("Location: index.php");
     }
 ?>
 
 <?php
-$cnx = mysql_connect("localhost:8889", "root", "root");
+$cnx = mysql_connect("localhost:3306", "root", "1");
 $dbName = "ucanada";
 $db  = mysql_select_db("ucanada");
 
@@ -39,7 +39,7 @@ $request = mysql_query($sql, $cnx);
     while ($result = mysql_fetch_object($request)) {
     
         $talbeName = $result->Tables_in_ucanada;
-        if (!($talbeName == "utilisateur"))  {
+        if (!($talbeName == "member"))  {
         echo '<tr>';
         echo '<td><a href="?table=' . $talbeName . '">' . $talbeName . '</a></td>';
         echo '</tr>';

@@ -1,16 +1,16 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION["username"]))
+    if (!isset($_SESSION["email"]))
     {
         header("Location: index.php");
     }
 ?>
 
 <?php
-$cnx = mysql_connect("localhost:8889", "root", "root");
-$dbName = "ucanada2";
-$db  = mysql_select_db("ucanada2");
+  $cnx = mysql_connect("ec2-54-197-250-40.compute-1.amazonaws.com:5432", "kndudxvctgholn", "2MaLR66M73nM-MvKkoPbXcbC_m");
+  $db = mysql_select_db("dc5ft6pilej1ng");
+  $dbName = "dc5ft6pilej1ng";
 ?>
 
 <!DOCTYPE html>

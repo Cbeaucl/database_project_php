@@ -24,8 +24,10 @@
 
         <fieldset>
         	<form name="inscription" action="inscription.php" onsubmit="return validate()" method="POST">
-                <p><label>Username</label></p>
-                <p><input type="text" name="username"><br></p>
+                <p><label>First Name</label></p>
+                <p><input type="text" name="firstname"><br></p>
+                <p><label>Last Name</label></p>
+                <p><input type="text" name="lastname"><br></p>
                 <p><label>Password</label></p>
                 <p><input type="password" name="password1"><br></p>
                 <p><label>Confirm password</label></p>
@@ -44,27 +46,27 @@
 
 	<?php
 
-		if (isset($_POST["username"])	 && isset($_POST["password1"]) && isset($_POST["email"]))
+		if (isset($_POST["firstname"]) && isset($_POST["password1"]) && isset($_POST["email"]))
 		{
 
-			$username = $_POST["username"];
-			
+			$firstname = $_POST["firstname"];
+			$lastname = $_POST["lastname"];
 			$password1 = $_POST["password1"];
 			$password2 = $_POST["password2"];
 			$email = $_POST["email"];
 
-            $cnx = mysql_connect("localhost:8889", "root", "root");
+            $cnx = mysql_connect("localhost:3306", "root", "1");
             $db = mysql_select_db("ucanada");
 
-            $sql = mysql_query("SELECT * FROM utilisateur WHERE pseudo='$username'");
+            $sql = mysql_query("SELECT * FROM member WHERE email='$email'");
 
             if (mysql_num_rows($sql) > 0) 
             {
-                echo '<script>alert("Username already exist.");</script>';
+                echo '<script>alert("Email already in system.");</script>';
             }
             else 
             {
-                $sql = "INSERT INTO utilisateur (pseudo, motdepasse, email) VALUES ('$username', '$password1', '$email')";
+                $sql = "INSERT INTO member (password, email, salt, role) VALUES ('$password1', '$email', '0', "user")";
                 $request = mysql_query($sql, $cnx) or die (mysql_error());
 
                 echo '<script>window.location.href="index.php"</script>';
@@ -78,15 +80,6 @@
 	{
 		isValid = true;
 		message = "";
-
-		    var x = document.forms["inscription"]["username"].value;
-            if (x == null || x == "" || x.length < 3) 
-            {
-                isValid = false;
-                message += "- Username must be 3 character minimum. \n";
-            }
-           
-            
 
             var x = document.forms["inscription"]["password1"].value;
             if (x == null || x == "" || x.length < 3) 
