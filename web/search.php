@@ -8,9 +8,9 @@
 ?>
 
 <?php
-  $cnx = mysql_connect("ec2-54-197-250-40.compute-1.amazonaws.com:5432", "kndudxvctgholn", "2MaLR66M73nM-MvKkoPbXcbC_m");
-  $db = mysql_select_db("dc5ft6pilej1ng");
-  $dbName = "dc5ft6pilej1ng";
+  $cnx = mysql_connect("localhost:3306", "root", "1");
+  $db = mysql_select_db("ucanada");
+  $dbName = "ucanada";
 ?>
 
 <!DOCTYPE html>
